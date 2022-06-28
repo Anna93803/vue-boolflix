@@ -1,0 +1,17 @@
+
+@import './variables.scss';
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background-color: $ColorPrimary;
+}
+
+.container {
+    padding: 1.25rem 2.5rem;
+}

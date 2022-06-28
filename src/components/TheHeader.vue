@@ -1,46 +1,29 @@
 <template>
-    <div>
-        <input type="text" placeholder="Search" v-model="searchText">
-        <button @click="getMovies">Send</button>
-
-        <ul>
-            <li v-for="(movie, i) in movieList" :key="i"><h2>{{movie.original_title}}</h2> 
-            <h5>{{movie.title}}</h5>
-            <small>{{movie.original_language}}</small>
-            <h6>{{movie.vote_average}}</h6>
-            
-            </li>
-        </ul>
+    <div class="container">
+        <div class="row">
+            <h1>BOOLFLIX</h1>
+            <div class="input">
+                <input type="text" placeholder="Search.." v-model="searchText" @keyup.enter="getMovies">
+                <button @click="getMovies" class="btn">Send</button>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
-import axios from "axios";
+
+import {getMovies} from "./store";
 
 export default {
     name: 'TheHeader',
     data() {
         return {
             searchText: '',
-            movieList: [],
         }
     },
     methods: {
         getMovies() {
-
-            axios.get("https://api.themoviedb.org/3/search/movie", {
-                params: {
-                    api_key: "52fa4879a16a66a273c3d46682a089b6",
-                    query: this.searchText,
-                    language: 'it',
-                },
-            })
-            .then((resp) => {
-                this.movieList = resp.data.results;
-            })
-            .cacht(() => {
-                alert('Operazione non riuscita.')
-            })
+            getMovies(this.searchText);
         }
     },
 }
@@ -48,5 +31,39 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+@import '../assets/style/variables.scss';
+
+.container {
+
+    .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h1 {
+            color: $ColorSecondary;
+        }
+
+        .input {
+
+            input {
+                border: none;
+                padding: .1875rem;
+                margin-right: .5rem;
+
+            }
+            .btn {
+                padding: .25rem .9375rem;
+                background-color: $ColorSecondary;
+                color: $ColorText;
+                cursor: pointer;
+            }
+        }
+    }
+
+}
+
+
 
 </style>
