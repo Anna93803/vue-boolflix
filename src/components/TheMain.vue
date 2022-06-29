@@ -9,13 +9,21 @@
                 </li>
             </ul>
 
+            <ul>
+                <li v-for="(serie, i) in seriesList" :key="i"><h2>Titolo originale: {{serie.original_name}}</h2> 
+                    <h5>Titolo: {{serie.name}}</h5>
+                    <h5>Lingua originale: {{movie.original_language}}</h5>
+                    <h5>Voto: {{movie.vote_average}}</h5>
+                </li>
+            </ul>
+
         </div>
     </div>
 </template>
 
 <script>
 
-import {state} from './store';
+import {state} from '../store';
 
 export default {
     name:'TheMain',
@@ -27,6 +35,9 @@ export default {
     computed: {
         moviesList() {
             return state.moviesList;
+        },
+        seriesList() {
+            return state.seriesList;
         }
     }
 }

@@ -6,9 +6,9 @@ export const state = Vue.observable ({
     seriesList: [],
 });
 
-export function getMovies(searchText) {
+export function getMovies(searchText, type) {
 
-    axios.get("https://api.themoviedb.org/3/search/movie", {
+    axios.get("https://api.themoviedb.org/3/search/" + type, {
         params: {
             api_key: "52fa4879a16a66a273c3d46682a089b6",
             query: searchText,
@@ -16,6 +16,10 @@ export function getMovies(searchText) {
         },
     })
     .then((resp) => {
-        state.moviesList = resp.data.results;
+        if(type === 'movie') {
+            state.moviesList = resp.data.results;
+        }else if (type === 'tv') {
+            state.seriesList = resp.data.results;
+        }
     })
 }

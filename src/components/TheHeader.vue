@@ -12,7 +12,7 @@
 
 <script>
 
-import {getMovies} from "./store";
+import {getMovies} from "../store";
 
 export default {
     name: 'TheHeader',
@@ -24,6 +24,7 @@ export default {
     methods: {
         getMovies() {
             getMovies(this.searchText);
+            this.searchText = "";
         }
     },
 }
