@@ -1,6 +1,7 @@
 <template>
     <div class="container">
         <div class="main">
+            <h1>Film</h1>
             <ul>
                 <li v-for="(movie, i) in moviesList" :key="i"><h2>Titolo originale: {{movie.original_title}}</h2> 
                     <h5>Titolo: {{movie.title}}</h5>
@@ -8,12 +9,12 @@
                     <h5>Voto: {{movie.vote_average}}</h5>
                 </li>
             </ul>
-
+            <h1>SERIE TV</h1>
             <ul>
                 <li v-for="(serie, i) in seriesList" :key="i"><h2>Titolo originale: {{serie.original_name}}</h2> 
                     <h5>Titolo: {{serie.name}}</h5>
-                    <h5>Lingua originale: {{movie.original_language}}</h5>
-                    <h5>Voto: {{movie.vote_average}}</h5>
+                    <h5>Lingua originale: {{serie.original_language}}</h5>
+                    <h5>Voto: {{serie.vote_average}}</h5>
                 </li>
             </ul>
 
@@ -48,6 +49,7 @@ export default {
 @import '../assets/style/variables.scss';
 
     .main {
+        color: $ColorText;
 
         ul li {
             color: #837c7c;

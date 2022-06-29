@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="row">
-            <h1>BOOLFLIX</h1>
+            <img src="../assets/img/logo.png" alt="">
             <div class="input">
                 <input type="text" placeholder="Search.." v-model="searchText" @keyup.enter="getMovies">
                 <button @click="getMovies" class="btn">Send</button>
@@ -19,11 +19,14 @@ export default {
     data() {
         return {
             searchText: '',
+            type: '',
         }
     },
     methods: {
         getMovies() {
-            getMovies(this.searchText);
+            getMovies(this.searchText, 'movie');
+            getMovies(this.searchText, 'tv');
+            
             this.searchText = "";
         }
     },
@@ -41,6 +44,10 @@ export default {
         display: flex;
         justify-content: space-between;
         align-items: center;
+
+        img {
+            width: 110px;
+        }
 
         h1 {
             color: $ColorSecondary;
