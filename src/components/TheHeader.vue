@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="row">
-            <img src="../assets/img/logo.png" alt="">
+            <img src="../assets/img/logo.png" alt="logo-netflix">
             <div class="input">
                 <input type="text" placeholder="Search.." v-model="searchText" @keyup.enter="getMovies">
                 <button @click="getMovies" class="btn">Send</button>
@@ -46,7 +46,7 @@ export default {
         align-items: center;
 
         img {
-            width: 110px;
+            width: 135px;
         }
 
         h1 {
