@@ -5,7 +5,7 @@
             <ul>
                 <li v-for="(movie, i) in moviesList" :key="i"><h2>Titolo originale: {{movie.original_title}}</h2> 
                     <h5>Titolo: {{movie.title}}</h5>
-                    <h5>Lingua originale: {{movie.original_language}}</h5>
+                    <h5>Lingua originale:<lang-flag :iso="movie.original_language" /></h5>
                     <h5>Voto: {{movie.vote_average}}</h5>
                 </li>
             </ul>
@@ -13,7 +13,7 @@
             <ul>
                 <li v-for="(serie, i) in seriesList" :key="i"><h2>Titolo originale: {{serie.original_name}}</h2> 
                     <h5>Titolo: {{serie.name}}</h5>
-                    <h5>Lingua originale: {{serie.original_language}}</h5>
+                    <h5>Lingua originale:<lang-flag :iso="serie.original_language"/></h5>
                     <h5>Voto: {{serie.vote_average}}</h5>
                 </li>
             </ul>
