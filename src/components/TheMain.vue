@@ -17,6 +17,7 @@
                     <h5>Titolo: {{serie.name}}</h5>
                     <h5>Lingua originale:<lang-flag :iso="serie.original_language"/></h5>
                     <h5>Voto:{{serie.vote_average}}</h5><i class="fa-solid fa-star"></i>
+                    
                     <!-- <i v-for="(star, i) in getStars(serie.vote_avarage)" :key="i" class="fa-solid fa-star"></i> -->
                 </li>
             </ul>
