@@ -2,6 +2,8 @@ import Vue from 'vue';
 import App from './App.vue';
 import LangFlag from 'vue-lang-code-flags';
 
+
+
 Vue.config.productionTip = false
 
 new Vue({
