@@ -2,10 +2,20 @@
     <div class="container">
         <div class="main">
             <div class="row">
+                <div>
+                    <h1>Movie Original Netflix</h1>
+                </div>
                 <div class="col">
                     <div v-for="movie in moviesList" :key="movie.id">
                         <TheCard :cards="movie"></TheCard>
                     </div>
+                </div>
+                <div class="row">
+                    <div>
+                        <h1>Series Original Netflix</h1>
+                    </div>
+                </div>
+                <div class="col">
                     <div v-for="serie in seriesList" :key="serie.id">
                         <TheCard :cards="serie"></TheCard>
                     </div>
@@ -42,6 +52,16 @@ export default {
 
     .main {
 
+        .row {
+
+            h1{
+                color: #cec0c0;
+                padding: 55px 0;
+                text-transform: uppercase;
+                font-size: 30px;
+                font-weight: 600;
+            }
+        }
         .col {
             display: flex;
             flex-wrap: wrap;
