@@ -9,10 +9,15 @@
 }
 
 body {
-    height: 100vh;
+    // height: 100vh;
     background-color: $ColorPrimary;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .container {
     padding: 1.25rem 2.5rem;
+}
+
+.yellow-star {
+    color: goldenrod;
 }

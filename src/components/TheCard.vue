@@ -1,21 +1,21 @@
 <template>
     <div class="card-movie">
-        <img :src="cover" alt="cover">
+        <img :src="coverError" alt="Immagine">
         <div class="card-hover">
-            <div v-if="cards.original_title">Titolo Originale: {{cards.original_title}}</div>
-            <div v-else-if="cards.original_name">Titolo Originale: {{cards.original_name}}</div>
-            <div v-if="cards.title">Titolo: {{cards.title}}</div>
-            <div v-else-if="cards.name">Titolo: {{cards.name}}</div>
-            <div>Lingua Originale: <lang-flag :iso="cards.original_language" /></div>
+            <div v-if="cards.original_title" :class="{'d-none' : cards.original_title === cards.title}"><span>Titolo Originale: </span> {{cards.original_title}}</div>
+            <div v-else-if="cards.original_name" :class="{'d-none' : cards.original_name === cards.name}"><span>Titolo Originale: </span>{{cards.original_name}}</div>
+            <div v-if="cards.title"><span>Titolo:</span> {{cards.title}}</div>
+            <div v-else-if="cards.name"><span>Titolo:</span> {{cards.name}}</div>
+            <div><span>Lingua Originale: </span><lang-flag :iso="cards.original_language"/></div>
             <div>
                 <span v-for="i in 5" :key="i">
-                    <i v-if="i <= getNum()" class="fa-solid fa-star"></i> 
+                    <i v-if="i <= getNum()" class="fa-solid fa-star yellow-star"></i> 
                     <i  v-else class="fa-regular fa-star"></i> 
                 </span>
             </div>
-            <div>Voto: {{getNum(cards.vote_average)}} </div>
-            <div v-if="cards.overview" >Overview: {{cards.overview}}</div>
-            <div v-else>Overview non Disponibile</div>
+            <!-- <div>Voto: {{getNum(cards.vote_average)}} </div> -->
+            <div v-if="cards.overview"><span>Overview</span>: {{cards.overview}}</div>
+            <div v-else><span>Overview:</span> Non Disponibile</div>
         </div>
     </div>
 </template>
@@ -30,23 +30,20 @@ export default {
     }, 
     data() {
         return {
-            poster: ""
+            
         }
     },
     computed: {
-        cover() {
+        coverError() {
             if(this.cards.poster_path === null) {
                 return '../imgError.png';
             }
             return `https://image.tmdb.org/t/p/w342/${this.cards.poster_path}`;
-        }
+        },
     },
     methods: {
-        getNum(vote) {
-            // return Math.round(num);
-            return  Math.ceil(vote / 2);
-            // return Math.floor(Math.random() * 5 + 1);
-    
+        getNum() {
+            return  Math.ceil(this.cards.vote_average / 2);
         },
     }
 }  
@@ -72,20 +69,28 @@ export default {
     bottom: 0;
     left: 0;
     opacity: 0;
-    font-size: 1.4375rem;
-    font-weight: 900;
-    padding: 3.125rem 1.25rem;
-    transition: all 0.3s;
+    font-weight: 700;
+    padding: 1.875rem 1.25rem;
+    transition: all 0.5s;
     overflow: auto;
 
     &:hover  {
         opacity: 1;
         background-color: rgba(253, 246, 246,0.8);
-        color: black;
+        color: $ColorPrimary;
+        cursor: pointer;
     }
 
     div {
         padding-bottom: .625rem;
+    }
+
+    span {
+        font-weight: 800;
+    }
+
+    .d-none {
+        display: none;
     }
 }
 

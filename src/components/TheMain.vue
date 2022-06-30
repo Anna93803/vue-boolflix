@@ -56,9 +56,9 @@ export default {
 
             h1{
                 color: #cec0c0;
-                padding: 55px 0;
+                padding: 3.4375rem 0;
                 text-transform: uppercase;
-                font-size: 30px;
+                font-size: 1.875rem;
                 font-weight: 600;
             }
         }

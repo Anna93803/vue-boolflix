@@ -46,7 +46,7 @@ export default {
         align-items: center;
 
         img {
-            width: 135px;
+            width: 200px;
         }
 
         h1 {
