@@ -1,6 +1,6 @@
 <template>
     <div class="card-movie">
-        <img :src="`https://image.tmdb.org/t/p/w342/${cards.poster_path}`" alt="cover" @error="imgError">
+        <img :src="cover" alt="cover">
         <div class="card-hover">
             <div v-if="cards.original_title">Titolo Originale: {{cards.original_title}}</div>
             <div v-else-if="cards.original_name">Titolo Originale: {{cards.original_name}}</div>
@@ -14,7 +14,8 @@
                 </span>
             </div>
             <div>Voto: {{getNum(cards.vote_average)}} </div>
-            <strong>Overview: {{cards.overview}}</strong>
+            <div v-if="cards.overview" >Overview: {{cards.overview}}</div>
+            <div v-else>Overview non Disponibile</div>
         </div>
     </div>
 </template>
@@ -29,7 +30,15 @@ export default {
     }, 
     data() {
         return {
-            poster: `https://image.tmdb.org/t/p/w342/${this.cards.poster_path}`
+            poster: ""
+        }
+    },
+    computed: {
+        cover() {
+            if(this.cards.poster_path === null) {
+                return '../imgError.png';
+            }
+            return `https://image.tmdb.org/t/p/w342/${this.cards.poster_path}`;
         }
     },
     methods: {
@@ -39,9 +48,6 @@ export default {
             // return Math.floor(Math.random() * 5 + 1);
     
         },
-        imgError() {
-            this.poster = `../assets/img/placeholder-126.png`;
-        }
     }
 }  
 
